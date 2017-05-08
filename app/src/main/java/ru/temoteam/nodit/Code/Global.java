@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import java.util.Arrays;
+
 public class Global {
 
     public static Lesson[][] lessons;
@@ -14,6 +16,8 @@ public class Global {
     public static void initilizate(Activity activity) {
         sharedPreferences = activity.getSharedPreferences("global", Context.MODE_PRIVATE);
     }
+
+
 
     public interface appInterface {
         void returner();

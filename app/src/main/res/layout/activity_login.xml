@@ -11,29 +11,36 @@
         android:layout_width="90dp"
         android:layout_height="90dp"
         app:srcCompat="@mipmap/ic_launcher"
+        android:layout_marginTop="39dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="66dp" />
+        android:layout_centerHorizontal="true" />
 
     <com.rengwuxian.materialedittext.MaterialEditText
         android:id="@+id/pass"
         android:layout_width="wrap_content"
-        android:layout_height="46dp"
-        android:hint="@string/password"
-        android:gravity="center"
-        android:layout_marginTop="17dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/login"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-15dp"
+        android:gravity="center"
+        android:hint="@string/password"
+        app:met_floatingLabel="normal"
+        app:met_singleLineEllipsis="true"
+        app:met_underlineColor="@color/colorPrimaryDark"
+        />
 
     <com.rengwuxian.materialedittext.MaterialEditText
         android:id="@+id/login"
         android:layout_width="wrap_content"
-        android:layout_height="46dp"
-        android:hint="@string/login"
-        android:gravity="center"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/logo"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="58dp" />
+        android:layout_marginTop="58dp"
+        android:gravity="center"
+        android:hint="@string/login"
+        app:met_floatingLabel="normal"
+        app:met_singleLineEllipsis="true"
+        app:met_underlineColor="@color/colorPrimaryDark"/>
 
     <TextView
         android:id="@+id/error_text"
@@ -42,9 +49,8 @@
         android:text="@string/incorrect_data"
         android:textColor="@android:color/holo_red_light"
         android:visibility="invisible"
-        android:layout_below="@+id/pass"
-        android:layout_alignStart="@+id/logo"
-        android:layout_marginTop="22dp" />
+        android:layout_alignBottom="@+id/pass"
+        android:layout_alignEnd="@+id/logo" />
 
     <Button
         android:id="@+id/login_button"
@@ -52,9 +58,9 @@
         android:layout_height="48dp"
         android:text="@string/login_action"
         android:visibility="visible"
+        android:layout_marginTop="37dp"
         android:layout_below="@+id/error_text"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="46dp" />
+        android:layout_centerHorizontal="true" />
 
     <ProgressBar
         android:id="@+id/progress"

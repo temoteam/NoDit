@@ -1,5 +1,6 @@
 package ru.temoteam.nodit.View;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.annotation.BoolRes;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,8 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 import org.json.JSONException;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 
 import ru.temoteam.nodit.Code.Global;
 import ru.temoteam.nodit.Code.Parser;
@@ -51,8 +54,6 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-
-
     public class Login extends AsyncTask<Void,Boolean,Boolean>{
 
         private String login;
@@ -81,14 +82,21 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         protected Boolean doInBackground(Void... params) {
             try {
-                String data = Parser.getData(login,pass);
-                publishProgress(true);
+                String data = "";
+                for (int i = 1; i < 10; i++) {
+                    try {
+                        data = Parser.getData(login, pass);
+                        publishProgress(true);
+                        Log.i("Try",i+"");
+                        break;
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+
                 Global.lessons=Parser.parseLessons(data);
                 return true;
-            } catch (IOException e) {
-                e.printStackTrace();
-                return false;
-            } catch (JSONException e) {
+            }  catch (JSONException e) {
                 e.printStackTrace();
                 return false;
             }
@@ -108,7 +116,8 @@ public class LoginActivity extends AppCompatActivity {
             loginButton.setVisibility(View.VISIBLE);
             if (aBoolean){
                 Global.sharedPreferences.edit().putString(Global.SharedPreferencesTags.S_LOGIN,login).putString(Global.SharedPreferencesTags.S_PASS,pass).apply();
-                Log.i("SUCCESS",Global.lessons.toString());
+                Log.i("SUCCESS", Arrays.deepToString(Global.lessons));
+                startActivity(new Intent(LoginActivity.this,MainActivity.class));
             }
             else {
                 if (hasData)
