@@ -2,9 +2,8 @@ package ru.temoteam.nodit.View;
 
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.annotation.BoolRes;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -15,11 +14,11 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 import org.json.JSONException;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 import ru.temoteam.nodit.Code.Global;
 import ru.temoteam.nodit.Code.Parser;
+import ru.temoteam.nodit.Code.mrkoParser;
 import ru.temoteam.nodit.R;
 
 public class LoginActivity extends AppCompatActivity {
@@ -85,11 +84,11 @@ public class LoginActivity extends AppCompatActivity {
                 String data = "";
                 for (int i = 1; i < 10; i++) {
                     try {
-                        data = Parser.getData(login, pass);
+                        data = mrkoParser.Companion.parse(login, pass);
                         publishProgress(true);
                         Log.i("Try",i+"");
                         break;
-                    } catch (IOException e) {
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
