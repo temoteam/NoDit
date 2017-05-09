@@ -29,15 +29,18 @@ public class Parser {
         return res;
     }
 
-    public static Lesson[][] parseLessons(String unparsed) throws JSONException {
+    public static String[][][] parseLessons(String unparsed) throws JSONException {
             JSONArray root_array = new JSONArray(unparsed);
-            Lesson[][] lessons = new Lesson[root_array.length()][];
+        String[][][] lessons = new String[root_array.length()][][];
             for (int i=0; i < root_array.length(); i++){
                 JSONArray day = root_array.getJSONArray(i);
-                lessons[i] = new Lesson[day.length()];
+                lessons[i] = new String[day.length()][];
                 for (int j=0; j < day.length(); j++){
                     JSONObject subject = day.getJSONObject(j);
-                    lessons[i][j] = new Lesson(subject.getString(" Lesson "),subject.getString(" Mark "),subject.getString(" DZ "));
+                    lessons[i][j] = new String[3];
+                    lessons[i][j][0] = subject.getString(" Lesson ");
+                    lessons[i][j][1] = subject.getString(" DZ ");
+                    lessons[i][j][2] = subject.getString(" Mark ");
                     }
             }
         return lessons;
