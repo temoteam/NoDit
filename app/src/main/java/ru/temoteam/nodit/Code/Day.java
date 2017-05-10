@@ -10,7 +10,7 @@ import java.util.Map;
 public class Day {
     private String date;
     private String dayOfWeek;
-    private HashMap<Integer,HashMap<String,String>> lessons;
+    public HashMap<Integer,HashMap<String,String>> lessons;
 
     public Day(String date,String dayOfWeek){
         this.date=date;

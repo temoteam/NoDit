@@ -18,7 +18,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".View.MainActivity"></activity>
+        <activity android:name=".View.MainActivity" />
+        <activity
+            android:name=".View.DaysActivity"
+            android:label="@string/title_activity_days"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

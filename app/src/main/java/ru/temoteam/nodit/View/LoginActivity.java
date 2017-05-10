@@ -100,7 +100,7 @@ public class LoginActivity extends AppCompatActivity {
             loginButton.setVisibility(View.VISIBLE);
             if (aBoolean){
                 Global.sharedPreferences.edit().putString(Global.SharedPreferencesTags.S_LOGIN,login).putString(Global.SharedPreferencesTags.S_PASS,pass).apply();
-                startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                startActivity(new Intent(LoginActivity.this,DaysActivity.class));
             }
             else {
                 errors.setText(R.string.incorrect_login_or_password);

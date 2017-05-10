@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="?android:attr/listPreferredItemHeight"
+    android:paddingLeft="?android:attr/listPreferredItemPaddingLeft"
+    android:paddingRight="?android:attr/listPreferredItemPaddingRight"
+    android:paddingStart="?android:attr/listPreferredItemPaddingStart"
+    android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/subject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dip"
+        android:textAppearance="?android:attr/textAppearanceListItemSmall"
+        tools:text="Предмет" />
+
+    <TextView
+        android:id="@+id/mark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@android:id/text1"
+        android:layout_alignStart="@android:id/text1"
+        android:layout_below="@android:id/text1"
+        android:text="Оценка"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:text="Оценка" />
+
+    <TextView
+        android:id="@+id/work"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@android:id/text1"
+        android:layout_alignStart="@android:id/text1"
+        android:layout_below="@android:id/text1"
+        android:text="Домашка"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+</LinearLayout>
