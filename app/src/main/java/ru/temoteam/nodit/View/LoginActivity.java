@@ -11,16 +11,11 @@ import android.widget.TextView;
 
 import com.rengwuxian.materialedittext.MaterialEditText;
 
-import org.json.JSONException;
-
-import java.io.IOException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Arrays;
 
 import ru.temoteam.nodit.Code.Global;
-import ru.temoteam.nodit.Code.Parser;
 import ru.temoteam.nodit.Code.mrkoParser;
 import ru.temoteam.nodit.R;
 
@@ -60,7 +55,6 @@ public class LoginActivity extends AppCompatActivity {
 
         private String login;
         private String pass;
-        private boolean hasData = false;
 
         public Login(String login, String pass){
             if (login.equals("")||pass.equals("")){
@@ -83,37 +77,22 @@ public class LoginActivity extends AppCompatActivity {
 
         @Override
         protected Boolean doInBackground(Void... params) {
-            try {
-                String data = "";
+            if(pass.length() != 32)
+                pass = getMD5EncryptedString(pass);
+
                 for (int i = 1; i < 10; i++) {
                     try {
-                        if(pass.length() == 32)
-                            data = mrkoParser.Companion.parse(login, pass);
-                        else
-                            data = mrkoParser.Companion.parse(login, getMD5EncryptedString(pass));
-                        publishProgress(true);
+                        Global.days= mrkoParser.Companion.parse(login,pass);
                         Log.i("Try",i+"");
-                        break;
+                        return true;
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
 
-                Global.lessons=Parser.parseLessons(data);
-                return true;
-            }  catch (JSONException e) {
-                e.printStackTrace();
                 return false;
-            }
         }
 
-        @Override
-        protected void onProgressUpdate(Boolean... values) {
-            super.onProgressUpdate(values);
-            if (values[0]){
-                hasData=true;
-            }
-        }
 
         @Override
         protected void onPostExecute(Boolean aBoolean) {
@@ -121,35 +100,32 @@ public class LoginActivity extends AppCompatActivity {
             loginButton.setVisibility(View.VISIBLE);
             if (aBoolean){
                 Global.sharedPreferences.edit().putString(Global.SharedPreferencesTags.S_LOGIN,login).putString(Global.SharedPreferencesTags.S_PASS,pass).apply();
-                Log.i("SUCCESS", Arrays.deepToString(Global.lessons));
                 startActivity(new Intent(LoginActivity.this,MainActivity.class));
             }
             else {
-                if (hasData)
-                    errors.setText(R.string.incorrect_login_or_password);
-                else
-                    errors.setText(R.string.unknown_error);
-
+                errors.setText(R.string.incorrect_login_or_password);
                 if (errors.getVisibility()==View.INVISIBLE)
                     errors.setVisibility(View.VISIBLE);
 
                 Global.sharedPreferences.edit().remove(Global.SharedPreferencesTags.S_LOGIN).remove(Global.SharedPreferencesTags.S_PASS).apply();
             }
         }
-        private String getMD5EncryptedString(String encTarget){
-            MessageDigest mdEnc = null;
-            try {
-                mdEnc = MessageDigest.getInstance("MD5");
-            } catch (NoSuchAlgorithmException e) {
-                System.out.println("Exception while encrypting to md5");
-                e.printStackTrace();
-            } // Encryption algorithm
-            mdEnc.update(encTarget.getBytes(), 0, encTarget.length());
-            String md5 = new BigInteger(1, mdEnc.digest()).toString(16);
-            while ( md5.length() < 32 ) {
-                md5 = "0"+md5;
-            }
-            return md5;
-        }
     }
+
+    private String getMD5EncryptedString(String encTarget){
+        MessageDigest mdEnc = null;
+        try {
+            mdEnc = MessageDigest.getInstance("MD5");
+        } catch (NoSuchAlgorithmException e) {
+            System.out.println("Exception while encrypting to md5");
+            e.printStackTrace();
+        }
+        mdEnc.update(encTarget.getBytes(), 0, encTarget.length());
+        String md5 = new BigInteger(1, mdEnc.digest()).toString(16);
+        while ( md5.length() < 32 ) {
+            md5 = "0"+md5;
+        }
+        return md5;
+    }
+
 }

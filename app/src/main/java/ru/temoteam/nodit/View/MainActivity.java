@@ -1,20 +1,11 @@
 package ru.temoteam.nodit.View;
 
-import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import android.support.v7.app.AppCompatActivity;
 
-
-import java.util.List;
-
-import de.codecrafters.tableview.TableDataAdapter;
 import de.codecrafters.tableview.TableView;
 import de.codecrafters.tableview.model.TableColumnWeightModel;
-import de.codecrafters.tableview.toolkit.SimpleTableDataAdapter;
+import ru.temoteam.nodit.Adapters.MTableDataAdapter;
 import ru.temoteam.nodit.Code.Global;
 import ru.temoteam.nodit.R;
 
@@ -32,42 +23,10 @@ public class MainActivity extends AppCompatActivity {
         columnModel.setColumnWeight(1, 3);
         columnModel.setColumnWeight(2, 1);
         tw.setColumnModel(columnModel);
-        tw.setDataAdapter(new MTableDataAdapter(this,Global.genTable()));
+        tw.setDataAdapter(new MTableDataAdapter(this,Global.days.get(2)));
     }
 
 
-    class MTableDataAdapter extends TableDataAdapter<String[]> {
 
-
-        public MTableDataAdapter(Context context, List<String[]> data) {
-            super(context, data);
-        }
-
-        @Override
-        public View getCellView(int rowIndex, int columnIndex, ViewGroup parentView) {
-            String[] s = getRowData(rowIndex);
-            View v = LayoutInflater.from(getContext()).inflate(R.layout.item_table, parentView, false);
-            TextView renderedView = (TextView) v.findViewById(R.id.textView);
-
-
-
-
-            switch (columnIndex) {
-                case 0:
-                    renderedView.setText(s[0]);
-                    break;
-                case 1:
-                    renderedView.setText(s[1]);
-                    break;
-                case 2:
-                    renderedView.setText(s[2]);
-                    break;
-
-
-            }
-
-            return v;
-        }
-    }
 
 }
