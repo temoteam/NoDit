@@ -15,33 +15,27 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
-    <com.rengwuxian.materialedittext.MaterialEditText
+    <EditText
         android:id="@+id/pass"
-        android:inputType="textPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/login"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="-15dp"
         android:gravity="center"
         android:hint="@string/password"
-        app:met_floatingLabel="normal"
-        app:met_singleLineEllipsis="true"
-        app:met_underlineColor="@color/colorPrimaryDark"
-        />
 
-    <com.rengwuxian.materialedittext.MaterialEditText
+        android:ems="10"
+        android:inputType="textPassword"
+        android:layout_below="@+id/login"
+        android:layout_centerHorizontal="true" />
+    <EditText
         android:id="@+id/login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/logo"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="58dp"
         android:gravity="center"
         android:hint="@string/login"
-        app:met_floatingLabel="normal"
-        app:met_singleLineEllipsis="true"
-        app:met_underlineColor="@color/colorPrimaryDark"/>
+        android:layout_alignStart="@+id/pass"
+        android:layout_alignEnd="@+id/pass" />
 
     <TextView
         android:id="@+id/error_text"
@@ -57,11 +51,11 @@
         android:id="@+id/login_button"
         android:layout_width="171dp"
         android:layout_height="48dp"
-        android:text="@string/login_action"
-        android:visibility="visible"
-        android:layout_marginTop="37dp"
         android:layout_below="@+id/error_text"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="37dp"
+        android:text="@string/login_action"
+        android:visibility="visible" />
 
     <ProgressBar
         android:id="@+id/progress"
@@ -71,5 +65,7 @@
         android:layout_height="36dp"
         android:layout_alignBottom="@+id/login_button"
         android:layout_centerHorizontal="true" />
+
+
 
 </RelativeLayout>

@@ -11,6 +11,7 @@ public class Global {
     public static List<Day> days;
     public static SharedPreferences sharedPreferences;
     public static Activity activity;
+    public static int currentDay;
 
 
     public static void initilizate(Activity activity) {

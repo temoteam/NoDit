@@ -1,25 +1,17 @@
 package ru.temoteam.nodit.Adapters;
 
-import android.content.ClipData;
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
+import android.graphics.Color;
 import android.util.Log;
-import android.view.View;
-import android.widget.ArrayAdapter;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-import ru.temoteam.nodit.Code.Day;
-import ru.temoteam.nodit.R;
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import java.util.HashMap;
+
+import ru.temoteam.nodit.R;
 
 /**
  * Created by rooh on 5/10/17.
@@ -64,9 +56,18 @@ public class MyArrayAdapter extends BaseAdapter {
         TextView workView = (TextView) rowView.findViewById(R.id.work);
 
         int pos = position + 1;
-        subjView.setText(lessons.get(pos).get("name"));
-        markView.setText("Оценка " + lessons.get(pos).get("mark"));
-        workView.setText(lessons.get(pos).get("homework"));
+        HashMap<String,String> lesson = lessons.get(pos);
+        subjView.setText(lesson.get("name"));
+        //String mark = "2";
+        String mark = lesson.get("mark").replaceAll("\\s","");
+        Log.d("mark", ">" + mark + "<");
+        if(mark.equals("2")) markView.setTextColor(Color.RED);
+        else if(mark.equals("3")) markView.setTextColor(Color.YELLOW);
+
+
+        if(mark.equals("–")) markView.setText("");
+        else markView.setText(mark);
+        workView.setText(lesson.get("homework"));
 
         return rowView;
     }

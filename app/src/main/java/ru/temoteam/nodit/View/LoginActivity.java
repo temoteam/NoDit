@@ -7,22 +7,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
-
-import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Iterator;
 
+import ru.temoteam.nodit.Code.Day;
 import ru.temoteam.nodit.Code.Global;
 import ru.temoteam.nodit.Code.mrkoParser;
 import ru.temoteam.nodit.R;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private MaterialEditText login;
-    private MaterialEditText pass;
+    private EditText login;
+    private EditText pass;
     private TextView errors;
     private Button loginButton;
 
@@ -32,8 +33,8 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         Global.initilizate(this);
 
-        login = (MaterialEditText) findViewById(R.id.login);
-        pass = (MaterialEditText) findViewById(R.id.pass);
+        login = (EditText) findViewById(R.id.login);
+        pass = (EditText) findViewById(R.id.pass);
         errors = (TextView) findViewById(R.id.error_text);
         loginButton = (Button) findViewById(R.id.login_button);
 
@@ -82,7 +83,14 @@ public class LoginActivity extends AppCompatActivity {
 
                 for (int i = 1; i < 10; i++) {
                     try {
-                        Global.days= mrkoParser.Companion.parse(login,pass);
+                        Global.days = mrkoParser.Companion.parse(login,pass);
+                        Iterator<Day> iterator = Global.days.iterator();
+                        //Remove days without lessons
+                        while (iterator.hasNext()){
+                            Day d = iterator.next();
+                            if (d.getLessons().length == 0)
+                                iterator.remove();
+                        }
                         Log.i("Try",i+"");
                         return true;
                     } catch (Exception e) {
@@ -109,6 +117,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 Global.sharedPreferences.edit().remove(Global.SharedPreferencesTags.S_LOGIN).remove(Global.SharedPreferencesTags.S_PASS).apply();
             }
+
         }
     }
 
