@@ -59,7 +59,7 @@ public class MyArrayAdapter extends BaseAdapter {
         HashMap<String,String> lesson = lessons.get(pos);
         subjView.setText(lesson.get("name"));
         //String mark = "2";
-        String mark = lesson.get("mark").replaceAll("\\s","");
+        String mark = lesson.get("mark").replaceAll("\\s","").substring(0,1);
         Log.d("mark", ">" + mark + "<");
         if(mark.equals("2")) markView.setTextColor(Color.RED);
         else if(mark.equals("3")) markView.setTextColor(Color.YELLOW);
