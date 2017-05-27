@@ -1,4 +1,4 @@
-package ru.temoteam.nodit.Adapters;
+package ru.temoteam.mrkotoday.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,8 +7,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import de.codecrafters.tableview.TableDataAdapter;
-import ru.temoteam.nodit.Code.Day;
-import ru.temoteam.nodit.R;
+import ru.temoteam.mrkotoday.Code.Day;
+import ru.temoteam.mrkotoday.R;
 
 /**
  * Created by AlexS on 5/9/2017.

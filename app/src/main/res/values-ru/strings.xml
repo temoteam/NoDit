@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="fields_not_filled">Поля не заполнены</string>
+    <string name="password">Пароль</string>
+    <string name="login">Логин</string>
+    <string name="incorrect_data">Неверные данные</string>
+    <string name="login_action">Вход</string>
+    <string name="incorrect_login_or_password">Неверный пользователь</string>
+    <string name="unknown_error">Ошибка</string>
+    <string name="title_activity_days">Расписание</string>
+    <string name="action_settings">Настройки</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+</resources>

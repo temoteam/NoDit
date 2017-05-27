@@ -1,4 +1,4 @@
-package ru.temoteam.nodit.View;
+package ru.temoteam.mrkotoday.View;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -15,10 +15,10 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Iterator;
 
-import ru.temoteam.nodit.Code.Day;
-import ru.temoteam.nodit.Code.Global;
-import ru.temoteam.nodit.Code.mrkoParser;
-import ru.temoteam.nodit.R;
+import ru.temoteam.mrkotoday.Code.Day;
+import ru.temoteam.mrkotoday.Code.Global;
+import ru.temoteam.mrkotoday.Code.mrkoParser;
+import ru.temoteam.mrkotoday.R;
 
 public class LoginActivity extends AppCompatActivity {
 

@@ -1,8 +1,8 @@
-package ru.temoteam.nodit;
+package ru.temoteam.mrkotoday;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Example local unit test, which will execute on the development machine (host).

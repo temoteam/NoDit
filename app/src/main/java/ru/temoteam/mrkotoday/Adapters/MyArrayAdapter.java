@@ -1,4 +1,4 @@
-package ru.temoteam.nodit.Adapters;
+package ru.temoteam.mrkotoday.Adapters;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import java.util.HashMap;
 
-import ru.temoteam.nodit.R;
+import ru.temoteam.mrkotoday.R;
 
 /**
  * Created by rooh on 5/10/17.

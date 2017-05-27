@@ -1,4 +1,4 @@
-package ru.temoteam.nodit.View;
+package ru.temoteam.mrkotoday.View;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -15,9 +15,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import ru.temoteam.nodit.Adapters.MyArrayAdapter;
-import ru.temoteam.nodit.Code.Global;
-import ru.temoteam.nodit.R;
+import ru.temoteam.mrkotoday.Adapters.MyArrayAdapter;
+import ru.temoteam.mrkotoday.Code.Global;
+import ru.temoteam.mrkotoday.R;
 
 public class DaysActivity extends AppCompatActivity {
 
@@ -58,9 +58,7 @@ public class DaysActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+
 
         return super.onOptionsItemSelected(item);
     }

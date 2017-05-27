@@ -1,4 +1,4 @@
-package ru.temoteam.nodit.Code;
+package ru.temoteam.mrkotoday.Code;
 
 import android.app.Activity;
 import android.content.Context;
